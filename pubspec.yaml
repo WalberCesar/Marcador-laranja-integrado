@@ -1,0 +1,53 @@
+name: marcador_laranja_app
+description: "A new Flutter project."
+publish_to: "none"
+version: 0.1.0
+
+environment:
+  sdk: ^3.4.0-70.0.dev
+
+dependencies:
+  flutter:
+    sdk: flutter
+  intl: ^0.20.2 #para usar datas
+  flip_card: ^0.7.0 #cartas jogo da memoria
+  http:
+  shared_preferences: ^2.2.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/images/Marcador_laranja_logo_1.png
+    - assets/cartas/a.png
+    - assets/cartas/b.png
+    - assets/cartas/c.png
+    - assets/cartas/d.png
+    - assets/cartas/e.png
+    - assets/cartas/f.png
+    - assets/cartas/g.png
+    - assets/cartas/h.png
+    - assets/cartas/i.png
+    - assets/cartas/j.png
+    - assets/cartas/k.png
+    - assets/cartas/l.png
+    - assets/cartas/m.png
+    - assets/cartas/n.png
+    - assets/cartas/o.png
+    - assets/cartas/p.png
+    - assets/cartas/q.png
+    - assets/cartas/r.png
+    - assets/cartas/s.png
+    - assets/cartas/t.png
+    - assets/cartas/u.png
+    - assets/cartas/v.png
+    - assets/cartas/w.png
+    - assets/cartas/x.png
+    - assets/cartas/y.png
+    - assets/cartas/z.png
+    - assets/cartas/fundo_carta.png
