@@ -99,15 +99,26 @@ class _LoginPageState extends State<LoginPage> {
                           ElevatedButton(
                             onPressed: _formularioValido
                                 ? () async {
+                                    // Mostrar loading
+                                    showDialog(
+                                      context: context,
+                                      barrierDismissible: false,
+                                      builder: (context) => Center(
+                                          child: CircularProgressIndicator()),
+                                    );
+
                                     var resp = await LoginUsuario(
                                         email_controler.text,
                                         senha_controler.text);
+
+                                    Navigator.pop(context); // Fechar loading
+
                                     if (resp) {
                                       // Salvar token no SharedPreferences
-                                      final prefs =
-                                          await SharedPreferences.getInstance();
-                                      await prefs.setString(
-                                          'token', Contexto.token);
+                                      // final prefs =
+                                      //     await SharedPreferences.getInstance();
+                                      // await prefs.setString(
+                                      //     'token', Contexto.token);
 
                                       ScaffoldMessenger.of(context)
                                           .showSnackBar(

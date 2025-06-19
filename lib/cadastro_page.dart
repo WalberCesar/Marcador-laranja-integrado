@@ -184,6 +184,15 @@ class _CadastroPageState extends State<CadastroPage> {
                       onPressed: _formularioValido
                           ? () async {
                               var idade = int.parse(_idadeController.text);
+
+                              // Mostrar loading
+                              showDialog(
+                                context: context,
+                                barrierDismissible: false,
+                                builder: (context) =>
+                                    Center(child: CircularProgressIndicator()),
+                              );
+
                               try {
                                 var resp = await CadastraUsuario(
                                     _nomeCriancaController.text,
@@ -193,6 +202,8 @@ class _CadastroPageState extends State<CadastroPage> {
                                     _senhaController.text,
                                     "S",
                                     _aceitouTermos ? "S" : "N");
+
+                                Navigator.pop(context); // Fechar loading
 
                                 if (resp) {
                                   ScaffoldMessenger.of(context).showSnackBar(
@@ -230,6 +241,7 @@ class _CadastroPageState extends State<CadastroPage> {
                                 _aceitouTermos = false;
                                 _dataConfirmacao = null;
                               } catch (e) {
+                                Navigator.pop(context); // Fechar loading
                                 print("Erro ao cadastrar usuário: $e");
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   SnackBar(

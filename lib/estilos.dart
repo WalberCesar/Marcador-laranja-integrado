@@ -65,7 +65,11 @@ final TextStyle estiloNomeCrianca = TextStyle(
   color: Colors.white,
 );
 
-final TextStyle estiloPontuacao = TextStyle(fontSize: 16, color: Colors.white);
+final TextStyle estiloPontuacao = TextStyle(
+  fontSize: 16,
+  color: Colors.white,
+  fontWeight: FontWeight.bold,
+);
 
 // ListTile
 
