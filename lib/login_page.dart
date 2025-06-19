@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:marcador_laranja_app/service/UsuarioService.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:marcador_laranja_app/service/Contexto.dart';
@@ -65,6 +66,12 @@ class _LoginPageState extends State<LoginPage> {
                               border: OutlineInputBorder(),
                               labelText: 'Email',
                             ),
+                             inputFormatters: [
+                              FilteringTextInputFormatter.allow(
+                                RegExp(r"[a-zA-Z0-9@._\-]"),
+                              ),
+                              LengthLimitingTextInputFormatter(60),
+                            ],
                           ),
                           SizedBox(height: 10),
                           TextField(
@@ -82,6 +89,12 @@ class _LoginPageState extends State<LoginPage> {
                               border: OutlineInputBorder(),
                               labelText: 'Senha',
                             ),
+                            inputFormatters: [
+                              FilteringTextInputFormatter.deny(
+                                RegExp(r'''[;'"\\\s]'''),
+                              ),
+                              LengthLimitingTextInputFormatter(20),
+                            ],
                           ),
                           if (_loginInvalido)
                             Padding(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 import 'package:marcador_laranja_app/service/UsuarioService.dart';
 import 'estilos.dart';
@@ -73,6 +74,11 @@ class _CadastroPageState extends State<CadastroPage> {
                         border: OutlineInputBorder(),
                         labelText: 'Nome da criança',
                       ),
+                      inputFormatters: [
+                        FilteringTextInputFormatter.allow(
+                            RegExp(r"[a-zA-Z\s]")),
+                        LengthLimitingTextInputFormatter(50),
+                      ],
                       onChanged: (_) => setState(() {}),
                     ),
                     SizedBox(height: 10),
@@ -104,6 +110,11 @@ class _CadastroPageState extends State<CadastroPage> {
                         border: OutlineInputBorder(),
                         labelText: 'Nome do responsável',
                       ),
+                      inputFormatters: [
+                        FilteringTextInputFormatter.allow(
+                            RegExp(r"[a-zA-Z\s]")),
+                        LengthLimitingTextInputFormatter(50),
+                      ],
                       onChanged: (_) => setState(() {}),
                     ),
                     SizedBox(height: 10),
@@ -114,6 +125,12 @@ class _CadastroPageState extends State<CadastroPage> {
                         border: OutlineInputBorder(),
                         labelText: 'E-mail',
                       ),
+                      inputFormatters: [
+                        FilteringTextInputFormatter.allow(
+                          RegExp(r"[a-zA-Z0-9@._\-]"),
+                        ),
+                        LengthLimitingTextInputFormatter(60),
+                      ],
                       onChanged: (_) => setState(() {}),
                     ),
                     SizedBox(height: 10),
@@ -124,6 +141,12 @@ class _CadastroPageState extends State<CadastroPage> {
                         border: OutlineInputBorder(),
                         labelText: 'Senha',
                       ),
+                      inputFormatters: [
+                        FilteringTextInputFormatter.deny(
+                          RegExp(r'''[;'"\\\s]'''),
+                        ),
+                        LengthLimitingTextInputFormatter(20),
+                      ],
                       onChanged: (_) => setState(() {}),
                     ),
                     SizedBox(height: 20),

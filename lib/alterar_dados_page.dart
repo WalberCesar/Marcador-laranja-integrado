@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:marcador_laranja_app/service/UsuarioService.dart';
 import 'dart:convert';
@@ -286,6 +287,11 @@ class _AlterarDadosPageState extends State<AlterarDadosPage> {
                         border: OutlineInputBorder(),
                         labelText: 'Nome da criança',
                       ),
+                      inputFormatters: [
+                        FilteringTextInputFormatter.allow(
+                            RegExp(r"[a-zA-Z\s]")),
+                        LengthLimitingTextInputFormatter(50),
+                      ],
                     ),
                     SizedBox(height: 10),
                     TextField(
@@ -315,6 +321,11 @@ class _AlterarDadosPageState extends State<AlterarDadosPage> {
                         border: OutlineInputBorder(),
                         labelText: 'Nome do responsável',
                       ),
+                      inputFormatters: [
+                        FilteringTextInputFormatter.allow(
+                            RegExp(r"[a-zA-Z\s]")),
+                        LengthLimitingTextInputFormatter(50),
+                      ],
                     ),
                     SizedBox(height: 10),
                     TextField(
@@ -324,6 +335,12 @@ class _AlterarDadosPageState extends State<AlterarDadosPage> {
                         border: OutlineInputBorder(),
                         labelText: 'Novo e-mail',
                       ),
+                      inputFormatters: [
+                        FilteringTextInputFormatter.allow(
+                          RegExp(r"[a-zA-Z0-9@._\-]"),
+                        ),
+                        LengthLimitingTextInputFormatter(60),
+                      ],
                     ),
                     SizedBox(height: 10),
                     TextField(
@@ -333,6 +350,12 @@ class _AlterarDadosPageState extends State<AlterarDadosPage> {
                         border: OutlineInputBorder(),
                         labelText: 'Nova senha (opcional)',
                       ),
+                      inputFormatters: [
+                        FilteringTextInputFormatter.deny(
+                          RegExp(r'''[;'"\\\s]'''),
+                        ),
+                        LengthLimitingTextInputFormatter(20),
+                      ],
                     ),
                     SizedBox(height: 10),
                     TextField(
@@ -342,6 +365,12 @@ class _AlterarDadosPageState extends State<AlterarDadosPage> {
                         border: OutlineInputBorder(),
                         labelText: 'Repita a nova senha',
                       ),
+                      inputFormatters: [
+                        FilteringTextInputFormatter.deny(
+                          RegExp(r'''[;'"\\\s]'''),
+                        ),
+                        LengthLimitingTextInputFormatter(20),
+                      ],
                     ),
                     SizedBox(height: 20),
                     ElevatedButton(

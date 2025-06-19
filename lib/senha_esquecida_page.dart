@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'estilos.dart';
 
 class SenhaEsquecidaPage extends StatelessWidget {
@@ -33,6 +34,12 @@ class SenhaEsquecidaPage extends StatelessWidget {
                       border: OutlineInputBorder(),
                       labelText: 'E-mail',
                     ),
+                    inputFormatters: [
+                      FilteringTextInputFormatter.allow(
+                        RegExp(r"[a-zA-Z0-9@._\-]"),
+                      ),
+                      LengthLimitingTextInputFormatter(60),
+                    ],
                   ),
                   SizedBox(height: 20),
                   ElevatedButton(
